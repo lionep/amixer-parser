@@ -1,0 +1,21 @@
+numid=5,iface=CARD,name='SPDIF Phantom Jack'
+  ; type=BOOLEAN,access=r-------,values=1
+  : values=on
+numid=1,iface=MIXER,name='IEC958 Playback Con Mask'
+  ; type=IEC958,access=r-------,values=1
+  : values=[AES0=0x0f AES1=0xff AES2=0x00 AES3=0x00]
+numid=2,iface=MIXER,name='IEC958 Playback Pro Mask'
+  ; type=IEC958,access=r-------,values=1
+  : values=[AES0=0x0f AES1=0x00 AES2=0x00 AES3=0x00]
+numid=3,iface=MIXER,name='IEC958 Playback Default'
+  ; type=IEC958,access=rw------,values=1
+  : values=[AES0=0x04 AES1=0x00 AES2=0x00 AES3=0x00]
+numid=4,iface=MIXER,name='IEC958 Playback Switch'
+  ; type=BOOLEAN,access=rw------,values=1
+  : values=on
+numid=6,iface=PCM,name='Playback Channel Map',device=1
+  ; type=INTEGER,access=r----R--,values=2,min=0,max=36,step=0
+  : values=0,0
+  |     | chmap-fixed=FL,FR
+
+

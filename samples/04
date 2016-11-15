@@ -1,0 +1,120 @@
+numid=20,iface=CARD,name='Front Headphone Surround Jack'
+  ; type=BOOLEAN,access=r-------,values=1
+  : values=off
+numid=27,iface=CARD,name='HDMI/DP,pcm=3 Jack'
+  ; type=BOOLEAN,access=r-------,values=1
+  : values=off
+numid=19,iface=CARD,name='Headphone Front Jack'
+  ; type=BOOLEAN,access=r-------,values=1
+  : values=on
+numid=18,iface=CARD,name='Mic Jack'
+  ; type=BOOLEAN,access=r-------,values=1
+  : values=off
+numid=21,iface=CARD,name='SPDIF Phantom Jack'
+  ; type=BOOLEAN,access=r-------,values=1
+  : values=on
+numid=17,iface=MIXER,name='Master Playback Switch'
+  ; type=BOOLEAN,access=rw------,values=1
+  : values=on
+numid=16,iface=MIXER,name='Master Playback Volume'
+  ; type=INTEGER,access=rw---R--,values=1,min=0,max=87,step=0
+  : values=62
+  | dBscale-min=-65.25dB,step=0.75dB,mute=0
+numid=2,iface=MIXER,name='Headphone Playback Switch'
+  ; type=BOOLEAN,access=rw------,values=2
+  : values=on,on
+numid=4,iface=MIXER,name='Headphone Playback Switch',index=1
+  ; type=BOOLEAN,access=rw------,values=2
+  : values=on,on
+numid=1,iface=MIXER,name='Headphone Playback Volume'
+  ; type=INTEGER,access=rw---R--,values=2,min=0,max=87,step=0
+  : values=87,87
+  | dBscale-min=-65.25dB,step=0.75dB,mute=0
+numid=3,iface=MIXER,name='Headphone Playback Volume',index=1
+  ; type=INTEGER,access=rw---R--,values=2,min=0,max=87,step=0
+  : values=87,87
+  | dBscale-min=-65.25dB,step=0.75dB,mute=0
+numid=34,iface=MIXER,name='PCM Playback Volume'
+  ; type=INTEGER,access=rw---RW-,values=2,min=0,max=255,step=0
+  : values=255,255
+  | dBscale-min=-51.00dB,step=0.20dB,mute=0
+numid=10,iface=MIXER,name='Mic Boost Volume'
+  ; type=INTEGER,access=rw---R--,values=2,min=0,max=3,step=0
+  : values=0,0
+  | dBscale-min=0.00dB,step=12.00dB,mute=0
+numid=7,iface=MIXER,name='Mic Playback Switch'
+  ; type=BOOLEAN,access=rw------,values=2
+  : values=off,off
+numid=6,iface=MIXER,name='Mic Playback Volume'
+  ; type=INTEGER,access=rw---R--,values=2,min=0,max=31,step=0
+  : values=0,0
+  | dBscale-min=-34.50dB,step=1.50dB,mute=0
+numid=9,iface=MIXER,name='Capture Switch'
+  ; type=BOOLEAN,access=rw------,values=2
+  : values=on,on
+numid=8,iface=MIXER,name='Capture Volume'
+  ; type=INTEGER,access=rw---R--,values=2,min=0,max=63,step=0
+  : values=39,39
+  | dBscale-min=-17.25dB,step=0.75dB,mute=0
+numid=5,iface=MIXER,name='Loopback Mixing'
+  ; type=ENUMERATED,access=rw------,values=1,items=2
+  ; Item #0 'Disabled'
+  ; Item #1 'Enabled'
+  : values=1
+numid=15,iface=MIXER,name='IEC958 Default PCM Playback Switch'
+  ; type=BOOLEAN,access=rw------,values=1
+  : values=on
+numid=28,iface=MIXER,name='IEC958 Playback Con Mask'
+  ; type=IEC958,access=r-------,values=1
+  : values=[AES0=0x0f AES1=0xff AES2=0x00 AES3=0x00]
+numid=11,iface=MIXER,name='IEC958 Playback Con Mask',index=16
+  ; type=IEC958,access=r-------,values=1
+  : values=[AES0=0x0f AES1=0xff AES2=0x00 AES3=0x00]
+numid=29,iface=MIXER,name='IEC958 Playback Pro Mask'
+  ; type=IEC958,access=r-------,values=1
+  : values=[AES0=0x0f AES1=0x00 AES2=0x00 AES3=0x00]
+numid=12,iface=MIXER,name='IEC958 Playback Pro Mask',index=16
+  ; type=IEC958,access=r-------,values=1
+  : values=[AES0=0x0f AES1=0x00 AES2=0x00 AES3=0x00]
+numid=30,iface=MIXER,name='IEC958 Playback Default'
+  ; type=IEC958,access=rw------,values=1
+  : values=[AES0=0x04 AES1=0x00 AES2=0x00 AES3=0x00]
+numid=13,iface=MIXER,name='IEC958 Playback Default',index=16
+  ; type=IEC958,access=rw------,values=1
+  : values=[AES0=0x04 AES1=0x00 AES2=0x00 AES3=0x00]
+numid=31,iface=MIXER,name='IEC958 Playback Switch'
+  ; type=BOOLEAN,access=rw------,values=1
+  : values=on
+numid=14,iface=MIXER,name='IEC958 Playback Switch',index=16
+  ; type=BOOLEAN,access=rw------,values=1
+  : values=on
+numid=23,iface=MIXER,name='Beep Playback Switch'
+  ; type=BOOLEAN,access=rw------,values=2
+  : values=off,off
+numid=22,iface=MIXER,name='Beep Playback Volume'
+  ; type=INTEGER,access=rw---R--,values=2,min=0,max=31,step=0
+  : values=0,0
+  | dBscale-min=-34.50dB,step=1.50dB,mute=0
+numid=25,iface=PCM,name='Capture Channel Map'
+  ; type=INTEGER,access=r----R--,values=2,min=0,max=36,step=0
+  : values=0,0
+  |     | chmap-fixed=FL,FR
+
+numid=24,iface=PCM,name='Playback Channel Map'
+  ; type=INTEGER,access=r----R--,values=4,min=0,max=36,step=0
+  : values=0,0,0,0
+  |     | chmap-fixed=FL,FR
+
+numid=26,iface=PCM,name='Playback Channel Map',device=1
+  ; type=INTEGER,access=r----R--,values=2,min=0,max=36,step=0
+  : values=0,0
+  |     | chmap-fixed=FL,FR
+
+numid=32,iface=PCM,name='ELD',device=3
+  ; type=BYTES,access=r--v----,values=0
+  : values=
+numid=33,iface=PCM,name='Playback Channel Map',device=3
+  ; type=INTEGER,access=rw---R--,values=8,min=0,max=36,step=0
+  : values=0,0,0,0,0,0,0,0
+  |     | chmap-variable=FL,FR
+
