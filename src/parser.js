@@ -89,7 +89,7 @@ module.exports = class AmixerParser {
     return device;
   }
 
-  static parse(input, raw) {
+  static parse(input) {
     const blocks = input.split('numid=');
     const devices = blocks.map((block) => {
       const device = {};
@@ -129,16 +129,15 @@ module.exports = class AmixerParser {
       .then(cards => _.uniq(cards));
   }
 
-  constructor(options = {raw: true}) {
+  constructor() {
     this.cards = [];
-    this.options = options;
   }
 
   parseCards() {
     return Promise.map(this.cards, cardId =>
       execAsync(`amixer -c ${cardId} contents`)
         .then(stdout =>
-          [cardId, AmixerParser.parse(stdout, this.options.raw)]
+          [cardId, AmixerParser.parse(stdout)]
         )
       )
       .then((cards) => {
