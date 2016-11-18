@@ -5,26 +5,21 @@ const execAsync = Promise.promisify(require('child_process').exec);
 module.exports = class AmixerParser {
   static parseGeneric(input) {
     const device = {};
-    const deviceInfos = input.split(',');
-    device.numid = parseInt(deviceInfos[0], 10);
 
-    for (let k = 1; k < deviceInfos.length; k++) {
-      if (/^iface=(.+)$/.test(deviceInfos[k])) {
-        const val = deviceInfos[k].match(/^iface=(.+)$/);
-        device.iface = val[1];
-      }
-      if (/^name=(.+)$/.test(deviceInfos[k])) {
-        const val = deviceInfos[k].match(/^name=(.+)$/);
-        device.name = val[1].replace(/'/g, '');
-      }
-      if (/^device=(.+)$/.test(deviceInfos[k])) {
-        const val = deviceInfos[k].match(/^device=(.+)$/);
-        device.device = parseInt(val[1], 10);
-      }
-      if (/^index=(.+)$/.test(deviceInfos[k])) {
-        const val = deviceInfos[k].match(/^index=(.+)$/);
-        device.index = parseInt(val[1], 10);
-      }
+    const deviceInfoRe = /^numid=([0-9]+),iface=([a-zA-Z0-9]+),name='([^']+)'(?:,device=([0-9]+))?(?:,index=([0-9]+))?$/;
+    const inputParsed = input.match(deviceInfoRe);
+    if (!inputParsed) {
+      return device;
+    }
+    device.numid = parseInt(inputParsed[1], 10);
+    device.iface = inputParsed[2];
+    device.name = inputParsed[3];
+
+    if (inputParsed[4]) {
+      device.device = parseInt(inputParsed[4], 10);
+    }
+    if (inputParsed[5]) {
+      device.device = parseInt(inputParsed[5], 10);
     }
     return device;
   }
@@ -99,7 +94,7 @@ module.exports = class AmixerParser {
 
       // First line is device description
       if (lines[0]) {
-        _.extend(device, AmixerParser.parseGeneric(lines[0]));
+        _.extend(device, AmixerParser.parseGeneric(`numid=${lines[0]}`));
       }
 
       for (let i = 1; i < lines.length; i++) {
