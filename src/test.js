@@ -7,9 +7,9 @@ const fs = require('fs');
 Promise.promisifyAll(fs);
 
 glob('./samples/*')
-  .map((file) => fs.readFileAsync(file))
-  .map((buffer) => buffer.toString())
+  .map(file => fs.readFileAsync(file))
+  .map(buffer => buffer.toString())
   .map(AmixerParser.parse)
-  .each((device) => {
-    console.log(JSON.stringify(device, undefined, 2));
-  });
+  .each(device =>
+    process.stdout.write(`${JSON.stringify(device, undefined, 2)}\n`)
+  );
