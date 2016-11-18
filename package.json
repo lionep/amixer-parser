@@ -1,6 +1,6 @@
 {
   "name": "amixer-parser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/index.js",
   "author": "Lionel Penaud",
   "repository" : {
