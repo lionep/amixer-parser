@@ -117,7 +117,7 @@ module.exports = class AmixerParser {
       .then((stdout) => {
         const lines = stdout.split('\n');
         return _.chain(lines)
-          .filter(line => /^card [0-9]+:/.test(line))
+          .filter(line => /^(card|carte|Karte) [0-9]+:/.test(line)) // http://git.alsa-project.org/?p=alsa-utils.git;a=tree;f=po
           .map(line => parseInt(line.split(':')[0].substring(5), 10))
           .value();
       })
